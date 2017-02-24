@@ -9,83 +9,83 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-### R $)C?!<- 5%@LEM :P<. =G=@@; GO1b?! @{4gGQ 3;@e 5%@LEM >H3;
+### R 에서 데이터 분석 실습을 하기에 적당한 내장 데이터 안내
 
-* **airquality** - 1999$)C3b:NEM 20023b 1nAv@G 9L19 AV?d Av?*@G 4k1b ?@?0 0|7C 5%@LEM  
-* **mtcars** - $)C@Z5?Bw A&A6;g:0 @Z5?Bw 8p5(?! 4kGQ 5%@LEM
+* **airquality** - 1999년부터 2002년 까지의 미국 주요 지역의 대기 오염 관련 데이터  
+* **mtcars** - 자동차 제조사별 자동차 모델에 대한 데이터
 
-$)C;s1b 5%@LEM4B 5%@LEM @/G|@L 8p5N data.frame @L4Y. (2Bw?x G|EB@G 5%@LEM A}GU)
+상기 데이터는 데이터 유형이 모두 data.frame 이다. (2차원 형태의 데이터 집합)
 
 
-### airquality $)C5%@LEM8& @L?kGX 5%@LEM E=;v?! @/?kGQ R GT<v ;lFl:81b
+### airquality 데이터를 이용해 데이터 탐색에 유용한 R 함수 살펴보기
 
-1. `dim` - $)C5%@LEM@G 79DZ5e(R ?k>n7N observation) <v?M DC73(R ?k>n7N variable) <v8& 9]H/
+1. `dim` - 데이터의 레코드(R 용어로 observation) 수와 컬럼(R 용어로 variable) 수를 반환
 
 ```{r }
 dim(airquality)
 ```
 
 
-2. `head` - $)C5%@LEM@G ;s@' 603 79DZ5e 9]H/
+2. `head` - 데이터의 상위 6개 레코드 반환
 
 ```{r }
 head(airquality)
 ```
 
-* `head` $)CGT<v @N@Z0*@87N <}@Z8& AvA$GO8i 1W <}@Z88E-@G 79DZ5e8& 9]H/
+* `head` 함수 인자값으로 숫자를 지정하면 그 숫자만큼의 레코드를 반환
 
 ``` {r }
 head(airquality, 10)
 ```
 
-3. `tail` - `head` $)CGT<v?M @/;gGOAv88 GO@'@G 603 79DZ5e8& 9]H/
+3. `tail` - `head` 함수와 유사하지만 하위의 6개 레코드를 반환
 
 ```{r }
 tail(airquality)
 ```
 
-4. `table` - $)C5%@LEM DC73@G 5%@LEM:0 :s55<v8& 9]H/
+4. `table` - 데이터 컬럼의 데이터별 빈도수를 반환
 
 ```{r }
 table(airquality$Ozone)
 ```
 
-* R $)C3;@e loop function A_?! GO3*@N `sapply` (simple apply @G >`@Z)?M 0aGUGO8i 8p5g DC73@G 5%@LEM:0 :s55<v8& GQ 9x?! H.@N 0!4I
+* R 내장 loop function 중에 하나인 `sapply` (simple apply 의 약자)와 결합하면 모든 컬럼의 데이터별 빈도수를 한 번에 확인 가능
 
 ```{r }
 sapply(airquality, table)
 ```
 
 
-4. `str` - $)C5%@LEM E=;v?! 0!@e @/?kGQ GT<v7N=a 5%@LEM@G 79DZ5e, DC73<v, 0" DC73:0 EW@LEM E8@T 9W 5%@LEM ;yGC A$:88& 9]H/GT. structure @G >`@Z
+4. `str` - 데이터 탐색에 가장 유용한 함수로써 데이터의 레코드, 컬럼수, 각 컬럼별 테이터 타입 및 데이터 샘플 정보를 반환함. structure 의 약자
 
 ```{r }
 str(airquality)
 ```
 
-5. `summary` - $)C5%@LEM@G 8p5g DC73?! 4kGQ Fr1U, A_>S0*, ;g:P@'0*, CV4k0*, CV<R0*@; 9]H/GT
+5. `summary` - 데이터의 모든 컬럼에 대한 평균, 중앙값, 사분위값, 최대값, 최소값을 반환함
 
 ```{r }
 summary(airquality)
 ```
 
 
-### R$)C@G plot 1b4I@; @L?kGQ 5%@LEM =C0"H- 8@:81b
+### R의 plot 기능을 이용한 데이터 시각화 맛보기
 
-1. **$)CHw=:Ed1W7%** - GO3*@G 0*?! 4kGQ :s55 :PFw8& 874k1W7!GA7N G%Gv
+1. **히스토그램** - 하나의 값에 대한 빈도 분포를 막대그래프로 표현
 
 ```{r }
 hist(airquality$Temp)
 ```
 
 
-2. **$)C=:D3EMGC7T** - 5N 03@G 0*?! 4kGQ 0|0h8& A! 6G4B 874k7N G%Gv
+2. **스캐터플롯** - 두 개의 값에 대한 관계를 점 또는 막대로 표현
 
 ```{r }
 plot(airquality$Ozone, airquality$Wind)
 ```
 
-* $)C=:D3EMGC7T?! ?I<G@; @{?kGO?)  GC7T@; 2Y9P <v @V@=
+* 스캐터플롯에 옵션을 적용하여  플롯을 꾸밀 수 있음
 
 ```{r }
 plot(airquality$Wind, airquality$Ozone, xlab = "Wind", ylab = "Ozone", main = "Relationship between Wind and Ozone", type = "h", lwd = 3, col = "green")
